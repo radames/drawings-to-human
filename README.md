@@ -1,6 +1,6 @@
 ---
 title: Drawing To Human
-emoji: 🏢
+emoji: ✍️🧍🏽‍♀️🧍🏻
 colorFrom: blue
 colorTo: blue
 sdk: static

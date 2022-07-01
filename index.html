@@ -58,11 +58,8 @@
 		<div class="pv2" id="observablehq-layout-8141fc94"></div>
 		<div class="pv2" id="observablehq-status-464cda71"></div>
 		<div class="pv2" id="observablehq-viewof-newSeed-8141fc94"></div>
-		<div class="" id="observablehq-predictStatus-8141fc94"></div>
 		<div class="pv2" id="observablehq-savaImage-8141fc94"></div>
-		<div class="pv2" id="observablehq-canvas-8141fc94"></div>
-		<div class="pv2" id="observablehq-predict-8141fc94"></div>
-		<div class="pv2" id="observablehq-newHuman-8141fc94"></div>
+		<div class="pv2" id="observablehq-seed-ad907e36"></div>
 		<script type="module">
 		import {
 			Runtime,
@@ -99,27 +96,11 @@
 			return new Inspector(
 				document.querySelector("#observablehq-viewof-newSeed-8141fc94")
 			);
-			if (name === "predictStatus")
-			return new Inspector(
-				document.querySelector("#observablehq-predictStatus-8141fc94")
-			);
 			if (name === "savaImage")
 			return new Inspector(
 				document.querySelector("#observablehq-savaImage-8141fc94")
 			);
-			if (name === "canvas")
-			return new Inspector(
-				document.querySelector("#observablehq-canvas-8141fc94")
-			);
-			if (name === "predict")
-			return new Inspector(
-				document.querySelector("#observablehq-predict-8141fc94")
-			);
-			if (name === "newHuman")
-			return new Inspector(
-				document.querySelector("#observablehq-newHuman-8141fc94")
-			);
-			return ["seed"].includes(name);
+			if (name === "seed") return new Inspector(document.querySelector("#observablehq-seed-ad907e36"));
 		});
 		</script>
 	</article>
