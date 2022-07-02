@@ -48,9 +48,7 @@
   </head>
   <body>
 	<article class="mw8 mx-auto ph3 sans-serif">
-		<div class="measure-wide">
-			<h1> Drawing to Human</h1>
-		</div>
+		<div class="measure-wide" id="observablehq-intro-8141fc94"></div>
 		<div class="pv2" id="observablehq-viewof-bushSelector-8141fc94"></div>
 		<div class="pv2" id="observablehq-viewof-sampleImage-8141fc94"></div>
 		<div class="pv2" id="observablehq-viewof-textureSelection-8141fc94"></div>
@@ -67,6 +65,10 @@
 		} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
 		import define from "https://api.observablehq.com/d/e1b697bfe5c5d136.js?v=3";
 		new Runtime().module(define, (name) => {
+			if (name === "intro")
+			return new Inspector(
+				document.querySelector("#observablehq-intro-8141fc94")
+			);
 			if (name === "viewof bushSelector")
 			return new Inspector(
 				document.querySelector("#observablehq-viewof-bushSelector-8141fc94")
