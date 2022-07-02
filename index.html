@@ -55,8 +55,8 @@
 		<div class="pv2" id="observablehq-viewof-generateButton-8141fc94"></div>
 		<div class="pv2" id="observablehq-layout-8141fc94"></div>
 		<div class="pv2" id="observablehq-status-464cda71"></div>
-		<div class="pv2" id="observablehq-viewof-newSeed-8141fc94"></div>
 		<div class="pv2" id="observablehq-savaImage-8141fc94"></div>
+		<div class="pv2" id="observablehq-viewof-newSeed-8141fc94"></div>
 		<div class="pv2" id="observablehq-seed-ad907e36"></div>
 		<script type="module">
 		import {
@@ -94,15 +94,16 @@
 				)
 			);
 			if (name === "status") return new Inspector(document.querySelector("#observablehq-status-464cda71"));
-			if (name === "viewof newSeed")
-			return new Inspector(
-				document.querySelector("#observablehq-viewof-newSeed-8141fc94")
-			);
 			if (name === "savaImage")
 			return new Inspector(
 				document.querySelector("#observablehq-savaImage-8141fc94")
 			);
-			if (name === "seed") return new Inspector(document.querySelector("#observablehq-seed-ad907e36"));
+			if (name === "viewof newSeed")
+			return new Inspector(
+				document.querySelector("#observablehq-viewof-newSeed-8141fc94")
+			);
+			if (name === "viewof seed") return new Inspector(document.querySelector("#observablehq-seed-ad907e36"));
+			
 		});
 		</script>
 	</article>
