@@ -1,5 +1,5 @@
 ---
-title: Drawing To Human
+title: Drawings to Human
 emoji: ✍️🧍🏽‍♀️🧍🏻
 colorFrom: blue
 colorTo: blue
