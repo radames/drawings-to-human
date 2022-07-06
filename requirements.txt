@@ -1,0 +1,2 @@
+flask
+gradio==3.0.24
