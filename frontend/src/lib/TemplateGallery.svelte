@@ -1,16 +1,31 @@
 <script lang="ts">
 	import { IMAGES_LIST } from '../data';
-	import { selectedImageBlob, generateHuman } from '$lib/store';
+	import { selectedImage, generateHuman } from '$lib/store';
 	import { base } from '$app/paths';
 
 	const submit = async (e: Event) => {
 		e.preventDefault();
 		const src = IMAGES_LIST[parseInt((e.target as HTMLInputElement).value)];
 		if (src) {
-			const blob = await fetch(base + src).then((res) => res.blob());
-			$selectedImageBlob = blob;
+			const blob = await fetch(base + src).then((res) => res.blob())
+			const img = await getImage(blob);
+			$selectedImage = img;
 		}
 	};
+
+	async function getImage(blob: Blob): Promise<HTMLImageElement> {
+		return new Promise((resolve, reject) => {
+			const img = new Image();
+			img.onload = () => {
+				URL.revokeObjectURL(img.src);
+				resolve(img);
+			};
+			img.onerror = (err) => {
+				reject(err);
+			};
+			img.src = URL.createObjectURL(blob);
+		});
+	}
 </script>
 
 <div>

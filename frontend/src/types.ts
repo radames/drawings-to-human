@@ -22,3 +22,15 @@ export interface FormElements extends HTMLCollection {
 	texture1: HTMLInputElement;
 	texture2: HTMLInputElement;
 }
+interface Point {
+	x: number;
+	y: number;
+}
+interface pxPoint {
+	from: Point;
+	to: Point;
+}
+export interface DrawingLayer {
+	brush: Brush;
+	points: pxPoint[];
+}
