@@ -42,9 +42,11 @@
 					}
 					a.href = base64Image;
 				};
-				a.click();
-				resolve(null);
-				console.log('Downloading image.');
+				requestAnimationFrame(() => {
+					console.log('Downloading image.');
+					a.click();
+					resolve(null);
+				});
 			} catch (err) {
 				reject();
 			}
@@ -114,13 +116,13 @@
 </script>
 
 {#if $resultImage}
-	<div class="inline-block relative overflow-clip">
+	<div class="relative overflow-clip">
 		<img class="image" alt="Generative Human Result" src={$resultImage} width="256" height="512" />
 	</div>
 {/if}
 
 <style lang="postcss" scoped>
 	.image {
-		@apply max-w-none box-border z-0 border dark:border-gray-300 border-gray-500 aspect-[256/512];
+		@apply box-border z-0 border dark:border-gray-300 border-gray-500 aspect-[256/512];
 	}
 </style>

@@ -51,7 +51,7 @@
 	</article>
 	<BrushSelector />
 	<TemplateGallery />
-	<div class="drawings py-3">
+	<div class="drawings py-3 -mx-3">
 		<DrawingCanvas />
 		<!-- {#if results} -->
 		<ResultCanvas />
@@ -74,7 +74,7 @@
 
 <style lang="postcss" scoped>
 	.drawings {
-		@apply grid grid-cols-1 sm:grid-cols-2 place-items-center;
+		@apply grid grid-cols-[2fr_1.5fr] sm:grid-cols-2 place-items-center;
 	}
 	button {
 		@apply p-1 disabled:opacity-50 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;

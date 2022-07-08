@@ -68,8 +68,8 @@
 	}
 	function pointerMove(e: MouseEvent) {
 		const position = getPosition(canvas, e);
-		brush.style.top = `${position.y}px`;
-		brush.style.left = `${position.x}px`;
+		brush.style.top = `${e.offsetY}px`;
+		brush.style.left = `${e.offsetX}px`;
 		if (!mouseDown) {
 			return;
 		}
@@ -94,8 +94,8 @@
 	function getPosition(canvas: HTMLCanvasElement, event: MouseEvent) {
 		const rect = canvas.getBoundingClientRect();
 		return {
-			x: event.clientX - rect.left,
-			y: event.clientY - rect.top
+			x: (event.clientX - rect.left) * (canvas.width / rect.width),
+			y: (event.clientY - rect.top) * (canvas.height / rect.height)
 		};
 	}
 	function setBrush(sBrush: Brush) {
@@ -157,7 +157,7 @@
 </script>
 
 <div>
-	<div class="inline-block relative overflow-clip">
+	<div class="relative overflow-clip">
 		<canvas
 			bind:this={canvas}
 			class="canvas"
@@ -175,7 +175,7 @@
 		<canvas bind:this={brush} class="brush" width="10" height="10" />
 		<span class="label">{$selectedBrush?.label} </span>
 		<button
-			class="absolute bottom-1 left-1"
+			class="absolute bottom-2 left-2"
 			on:click|preventDefault={() => rollBack()}
 			disabled={$drawingLayers.size <= 0}><UndoIcon /></button
 		>
@@ -184,7 +184,7 @@
 
 <style lang="postcss" scoped>
 	.canvas {
-		@apply box-border z-0 border dark:border-gray-300 border-gray-500 aspect-[256/512];
+		@apply max-w-full w-full z-0 border dark:border-gray-300 border-gray-500 aspect-[256/512];
 	}
 	.brush {
 		@apply z-10 absolute pointer-events-none -translate-x-1/2 -translate-y-1/2;

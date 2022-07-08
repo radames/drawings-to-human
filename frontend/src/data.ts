@@ -27,9 +27,9 @@ export const COLOR_LIST: Color[] = [
 	{ color: [50, 155, 250], label: 'wrist wearing' }
 ];
 
-// export const API = 'https://hf.space/embed/radames/Text2Human-API';
-export const API = 'https://hf.space/embed/CVPR/Text2Human';
-
+export const API = 'https://hf.space/embed/radames/Text2Human-API';
+// export const API = 'https://hf.space/embed/CVPR/Text2Human';
+// 
 export const IMAGES_LIST = [
 	'/samples/MEN-Pants-id_00002565-02_1_front_segm.png',
 	'/samples/MEN-Pants-id_00005213-02_4_full_segm.png',
