@@ -33,7 +33,7 @@
 				<a href="https://huggingface.co/hysts" target="_blank">@hysts</a> for the original Space implementation
 			</p>
 		</small>
-		<details open>
+		<details>
 			<summary class="cursor-pointer"> <small>More</small> </summary>
 			<p>
 				The backend is powered by a <a href="https://gradio.app/" target="_blank">Gradio</a>
@@ -53,9 +53,7 @@
 	<TemplateGallery />
 	<div class="drawings py-3 -mx-3">
 		<DrawingCanvas />
-		<!-- {#if results} -->
 		<ResultCanvas />
-		<!-- {/if} -->
 	</div>
 	<button
 		on:click|preventDefault={() => ($generateHuman = true)}

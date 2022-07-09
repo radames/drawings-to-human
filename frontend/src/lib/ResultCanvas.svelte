@@ -115,14 +115,39 @@
 	}
 </script>
 
-{#if $resultImage}
-	<div class="relative overflow-clip">
-		<img class="image" alt="Generative Human Result" src={$resultImage} width="256" height="512" />
-	</div>
-{/if}
+<div class="relative overflow-clip flex flex-col justify-center w-full h-full">
+	{#if $resultImage}
+		<img
+			class="image {$generateHuman ? 'opacity-30' : ''}"
+			alt="Generative Human Result"
+			src={$resultImage}
+			width="256"
+			height="512"
+		/>
+	{/if}
+	{#if $generateHuman}
+		<div class="loading">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				class="animate-spin max-w-[3rem]"
+			>
+				<path
+					fill="currentColor"
+					d="M20 12a8 8 0 0 1-8 8v4a12 12 0 0 0 12-12h-4Zm-2-5.3a8 8 0 0 1 2 5.3h4c0-3-1.1-5.8-3-8l-3 2.7Z"
+				/>
+			</svg>
+		</div>
+	{/if}
+</div>
 
+<!-- {/if} -->
 <style lang="postcss" scoped>
 	.image {
 		@apply box-border z-0 border dark:border-gray-300 border-gray-500 aspect-[256/512];
+	}
+	.loading {
+		@apply absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center;
 	}
 </style>
