@@ -115,7 +115,7 @@
 	}
 </script>
 
-<div class="relative overflow-clip flex flex-col justify-center w-full h-full">
+<div class="relative overflow-clip flex flex-col justify-center items-center w-full h-full">
 	{#if $resultImage}
 		<img
 			class="image {$generateHuman ? 'opacity-30' : ''}"
@@ -138,6 +138,7 @@
 					d="M20 12a8 8 0 0 1-8 8v4a12 12 0 0 0 12-12h-4Zm-2-5.3a8 8 0 0 1 2 5.3h4c0-3-1.1-5.8-3-8l-3 2.7Z"
 				/>
 			</svg>
+			<span class="text-xs">{predictStatus}</span>
 		</div>
 	{/if}
 </div>
@@ -148,6 +149,6 @@
 		@apply box-border z-0 border dark:border-gray-300 border-gray-500 aspect-[256/512];
 	}
 	.loading {
-		@apply absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center;
+		@apply absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center;
 	}
 </style>
