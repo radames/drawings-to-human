@@ -3,14 +3,14 @@
 	import { selectedParams, generateHuman } from '$lib/store';
 	import type { FormElements } from '../types';
 	import { randomSeed } from '$lib/utils';
-	const submit = () => {
+	function submit() {
 		const elements: FormElements = form.elements as FormElements;
 		$selectedParams = {
 			texture: `${elements.texture0.value},${elements.texture1.value},${elements.texture2.value}`,
 			seed: BigInt(elements.seed.value),
 			steps: parseInt(elements.steps.value)
 		};
-	};
+	}
 
 	let form: HTMLFormElement;
 	let seed: bigint = $selectedParams.seed;
@@ -37,7 +37,13 @@
 		placeholder="Integer Seed"
 		disabled={$generateHuman === true}
 	/>
-	<button on:click|preventDefault={() => (seed = randomSeed())} disabled={$generateHuman === true}>
+	<button
+		on:click|preventDefault={() => {
+			seed = randomSeed();
+			submit();
+		}}
+		disabled={$generateHuman === true}
+	>
 		Random
 	</button>
 	<h4 class="font-bold mt-6 mb-2 my-6 leading-6">Sample Steps</h4>
