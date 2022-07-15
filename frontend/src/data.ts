@@ -57,8 +57,8 @@ export const IMAGES_LIST = [
 
 
 export const SECTIONS = [
-    "lower clothing texture",
     "upper clothing texture",
+	"lower clothing texture",
     "outer clothing texture"
   ];
 
