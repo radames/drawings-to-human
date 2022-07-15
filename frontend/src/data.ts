@@ -33,6 +33,7 @@ export const API = 'https://hf.space/embed/radames/Text2Human-API';
 // export const API = 'https://hf.space/embed/hysts/Text2Human';
 // 
 export const IMAGES_LIST = [
+	'/samples/WOMEN-Skirts-id_00004406-02_7_additional_segm.png',
 	'/samples/MEN-Pants-id_00002565-02_1_front_segm.png',
 	'/samples/MEN-Pants-id_00005213-02_4_full_segm.png',
 	'/samples/WOMEN-Blouses_Shirts-id_00002356-02_4_full_segm.png',

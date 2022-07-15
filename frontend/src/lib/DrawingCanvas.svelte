@@ -33,6 +33,8 @@
 		brushCtx = brush.getContext('2d') as CanvasRenderingContext2D;
 		window.devicePixelRatio = 1;
 		pxBrush = new PxBrush(canvas);
+		canvas.style.height = 'unset';
+		canvas.style.width = 'unset';
 		$currentCanvas = canvas;
 		clearCanvas(ctx);
 	});
@@ -138,7 +140,7 @@
 			return map;
 		});
 		drawLayers(ctx);
-		drawPixels(ctx);
+		// drawPixels(ctx);
 	}
 	function drawLayers(ctx: CanvasRenderingContext2D) {
 		const tempcanvas = document.createElement('canvas');
@@ -186,7 +188,7 @@
 		<canvas bind:this={brush} class="brush" width="10" height="10" />
 		<span class="label">{$selectedBrush?.label} </span>
 		<button
-			class="absolute bottom-2 left-2"
+			class="absolute bottom-0 left-0 p-3"
 			on:click|preventDefault={() => rollBack()}
 			disabled={$drawingLayers.size <= 0}><UndoIcon /></button
 		>
