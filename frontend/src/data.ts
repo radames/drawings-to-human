@@ -28,7 +28,9 @@ export const COLOR_LIST: Color[] = [
 ];
 
 export const API = 'https://hf.space/embed/radames/Text2Human-API';
+// export const API = 'http://localhost:7860';
 // export const API = 'https://hf.space/embed/CVPR/Text2Human';
+// export const API = 'https://hf.space/embed/hysts/Text2Human';
 // 
 export const IMAGES_LIST = [
 	'/samples/MEN-Pants-id_00002565-02_1_front_segm.png',
@@ -46,7 +48,6 @@ export const IMAGES_LIST = [
 	'/samples/WOMEN-Jackets_Coats-id_00005263-06_1_front_segm.png',
 	'/samples/WOMEN-Jackets_Coats-id_00006296-05_7_additional_segm.png',
 	'/samples/WOMEN-Rompers_Jumpsuits-id_00004575-02_1_front_segm.png',
-	'/samples/WOMEN-Skirts-id_00006761-01_1_front_segm.png',
 	'/samples/WOMEN-Sweaters-id_00004667-01_4_full_segm.png',
 	'/samples/WOMEN-Tees_Tanks-id_00001620-02_4_full_segm.png',
 	'/samples/WOMEN-Tees_Tanks-id_00005288-01_2_side_segm.png',

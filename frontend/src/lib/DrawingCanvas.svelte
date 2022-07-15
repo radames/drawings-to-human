@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import type { Brush } from '../types';
 	import UndoIcon from '$lib/Icons/Undo.svelte';
-
+	import { COLOR_LIST } from '../data';
 	import { selectedBrush, selectedImage, currentCanvas, drawingLayers } from '$lib/store';
 
 	let canvas: HTMLCanvasElement;
@@ -13,7 +13,7 @@
 	let brushCtx: CanvasRenderingContext2D;
 	let ctx: CanvasRenderingContext2D;
 	let startPosition: { x: number; y: number } = { x: 0, y: 0 };
-
+	let pxBrush: PxBrush;
 	$: {
 		if (brushCtx && $selectedBrush) {
 			setBrush($selectedBrush);
@@ -32,6 +32,7 @@
 		ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 		brushCtx = brush.getContext('2d') as CanvasRenderingContext2D;
 		window.devicePixelRatio = 1;
+		pxBrush = new PxBrush(canvas);
 		$currentCanvas = canvas;
 		clearCanvas(ctx);
 	});
@@ -49,12 +50,12 @@
 	function pointerDown(e: MouseEvent) {
 		mouseDown = true;
 		startPosition = getPosition(canvas, e);
-		// pxBrush.draw({
-		// 	from: startPosition,
-		// 	to: startPosition,
-		// 	size: $selectedBrush.size,
-		// 	color: $selectedBrush.color
-		// });
+		pxBrush.draw({
+			from: startPosition,
+			to: startPosition,
+			size: $selectedBrush.size,
+			color: $selectedBrush.color
+		});
 
 		currLayerId = nanoid();
 		drawingLayers.update((map) => {
@@ -64,7 +65,7 @@
 			});
 			return map;
 		});
-		drawLayers();
+		// drawLayers();
 	}
 	function pointerMove(e: MouseEvent) {
 		const position = getPosition(canvas, e);
@@ -73,12 +74,12 @@
 		if (!mouseDown) {
 			return;
 		}
-		// pxBrush.draw({
-		// 	from: startPosition,
-		// 	to: position,
-		// 	size: $selectedBrush.size,
-		// 	color: $selectedBrush.color
-		// });
+		pxBrush.draw({
+			from: startPosition,
+			to: position,
+			size: $selectedBrush.size,
+			color: $selectedBrush.color
+		});
 
 		drawingLayers.update((map) => {
 			const currentLayer = map.get(currLayerId);
@@ -89,7 +90,7 @@
 			return map;
 		});
 		startPosition = position;
-		drawLayers();
+		// drawLayers();
 	}
 	function getPosition(canvas: HTMLCanvasElement, event: MouseEvent) {
 		const rect = canvas.getBoundingClientRect();
@@ -110,9 +111,18 @@
 	}
 
 	function clearCanvas(ctx: CanvasRenderingContext2D) {
-		ctx.fillStyle = '000';
-		ctx.rect(0, 0, ctx.canvas.width, ctx.canvas.height);
-		ctx.fill();
+		ctx.fillStyle = '#000000';
+		ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+	}
+	function drawPixels(ctx: CanvasRenderingContext2D) {
+		COLOR_LIST.forEach((c, i) => {
+			pxBrush.draw({
+				from: { x: i * 2, y: ctx.canvas.height },
+				to: { x: i * 2, y: ctx.canvas.height - 3 },
+				size: 2,
+				color: `rgb(${c.color.join(',')})`
+			});
+		});
 	}
 	function drawImage(ctx: CanvasRenderingContext2D, img: HTMLImageElement | HTMLCanvasElement) {
 		ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -127,9 +137,10 @@
 			map.delete(ids[ids.length - 1]);
 			return map;
 		});
-		drawLayers();
+		drawLayers(ctx);
+		drawPixels(ctx);
 	}
-	function drawLayers() {
+	function drawLayers(ctx: CanvasRenderingContext2D) {
 		const tempcanvas = document.createElement('canvas');
 		tempcanvas.width = 256;
 		tempcanvas.height = 512;
