@@ -14,7 +14,7 @@ const config = {
 
 	kit: {
 		paths: {
-			base: dev ? '/static' : '/embed/CVPR/drawings-to-human/static'
+			base: '/static'
 		},
 		adapter: adapter({
 			pages: 'build',
